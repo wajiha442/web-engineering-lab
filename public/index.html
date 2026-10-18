@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +18,14 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#schedule" aria-current="location">Office Hours</a>
+                    <a href="#schedule" class="nav-link" aria-current="location">
+                        Office Hours
+                    </a>
                 </li>
                 <li>
-                    <a href="#feedback">Send Feedback</a>
+                    <a href="#feedback" class="nav-link">
+                        Send Feedback
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -63,7 +68,7 @@
                     <circle cx="12" cy="10" r="2"></circle>
                 </svg>
 
-                <figcaption>
+                <figcaption class="text-muted">
                     All office hours are held in Room 214.
                 </figcaption>
             </figure>
@@ -119,29 +124,34 @@
 
             <form>
 
-                <div>
-                    <label for="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                    >
-                </div>
+                <!-- Task 2: Margin Collapse Experiment -->
+                <div class="field-experiment">
 
-                <div>
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        aria-describedby="email-hint"
-                    >
+                    <p>
+                        <label for="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                        >
+                    </p>
 
-                    <span id="email-hint">
-                        We will only use this to reply to you.
-                    </span>
+                    <p>
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            aria-describedby="email-hint"
+                        >
+
+                        <span id="email-hint" class="text-muted">
+                            We will only use this to reply to you.
+                        </span>
+                    </p>
+
                 </div>
 
                 <fieldset>

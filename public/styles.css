@@ -1,259 +1,406 @@
- * {
-    box-sizing: border-box;
+
+/* LAB 03: The Cascade, Specificity and Modern CSS Foundations */
+
+@layer reset, base, components, utilities;
+
+
+/* =========================
+   TASK 1: BOX MODEL RESET
+   ========================= */
+
+@layer reset {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body,
+    h1,
+    h2,
+    p,
+    figure {
+        margin: 0;
+    }
 }
 
-html {
-    scroll-behavior: smooth;
+
+/* =========================
+   TASK 5, 6, 9, 10: BASE
+   Design tokens, typography,
+   modern colours and themes
+   ========================= */
+
+@layer base {
+    :root {
+        color-scheme: light dark;
+
+        --space: 1rem;
+
+        --color-bg: light-dark(
+            oklch(98% 0.01 255),
+            oklch(20% 0.02 255)
+        );
+
+        --color-text: light-dark(
+            oklch(25% 0.02 255),
+            oklch(94% 0.01 255)
+        );
+
+        --color-accent: light-dark(
+            oklch(40% 0.12 255),
+            oklch(75% 0.12 255)
+        );
+
+        --color-header-start: light-dark(
+            oklch(35% 0.09 255),
+            oklch(28% 0.06 255)
+        );
+
+        --color-header-end: light-dark(
+            oklch(48% 0.12 255),
+            oklch(38% 0.09 255)
+        );
+
+        --color-surface: color-mix(
+            in oklch,
+            var(--color-bg) 92%,
+            var(--color-accent)
+        );
+
+        --color-border: color-mix(
+            in oklch,
+            var(--color-text) 30%,
+            var(--color-bg)
+        );
+
+        --color-muted: light-dark(
+            oklch(40% 0.02 255),
+            oklch(80% 0.02 255)
+        );
+
+        --color-link-bg: oklch(98% 0.01 255);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+        color: var(--color-text);
+        background: var(--color-bg);
+        padding: var(--space);
+    }
+
+    main {
+        max-inline-size: 60rem;
+        margin-inline: auto;
+        padding-block: 1rem;
+    }
+
+    input,
+    textarea,
+    button {
+        font: inherit;
+    }
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    background: #f4f7fb;
-    color: #1f2937;
+
+/* =========================
+   TASK 3, 4, 7, 8, 10
+   COMPONENTS AND CASCADE
+   ========================= */
+
+@layer components {
+    header {
+        background: linear-gradient(
+            135deg,
+            var(--color-header-start),
+            var(--color-header-end)
+        );
+        color: white;
+        padding: 35px 8%;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+        margin-block-end: 20px;
+        font-size: 2.2rem;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav a {
+        display: inline-block;
+        color: white;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        transition: background 0.2s, transform 0.2s;
+    }
+
+    nav a:hover {
+        background: rgba(255, 255, 255, 0.28);
+        transform: translateY(-2px);
+    }
+
+    section {
+        background: var(--color-surface);
+        margin-block-end: 30px;
+        padding: 30px;
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    section h2 {
+        color: var(--color-accent);
+        margin-block-start: 0;
+        margin-block-end: 1rem;
+        border-block-end: 2px solid var(--color-border);
+        padding-block-end: 10px;
+    }
+
+    #intro ul {
+        padding-inline-start: 25px;
+    }
+
+    #intro li {
+        margin-block: 8px;
+    }
+
+    main > svg {
+        display: block;
+        margin: 10px auto;
+    }
+
+    svg {
+        color: var(--color-accent);
+        fill: currentColor;
+    }
+
+    figure {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: var(--color-surface);
+        padding: 15px;
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        margin-block: 20px;
+    }
+
+    figure svg {
+        flex-shrink: 0;
+    }
+
+    figcaption {
+        font-size: 0.95rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-block-start: 20px;
+    }
+
+    caption {
+        text-align: start;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-block-end: 12px;
+        color: var(--color-accent);
+    }
+
+    th,
+    td {
+        border: 1px solid var(--color-border);
+        padding: 13px;
+        text-align: start;
+    }
+
+    th {
+        background: var(--color-header-start);
+        color: white;
+    }
+
+    tbody tr:nth-child(even) {
+        background: var(--color-surface);
+    }
+
+    tbody tr:hover {
+        background: var(--color-border);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    /* TASK 2: Margin collapse experiment */
+    form p {
+        margin-block: 0.5rem 1rem;
+    }
+
+    .field-experiment p {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    label {
+        display: block;
+        margin-block-end: 7px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        max-width: 600px;
+        padding: 11px 13px;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        color: var(--color-text);
+        background: var(--color-bg);
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    input[type="radio"] {
+        width: auto;
+        margin-inline-end: 8px;
+    }
+
+    fieldset {
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        padding: 18px;
+        max-width: 600px;
+    }
+
+    legend {
+        font-weight: bold;
+        color: var(--color-accent);
+        padding-inline: 8px;
+    }
+
+    fieldset label {
+        font-weight: normal;
+    }
+
+    #email-hint {
+        display: block;
+        margin-block-start: 5px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        width: fit-content;
+        max-width: 100%;
+        padding: 11px 24px;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        background: var(--color-accent);
+        color: var(--color-bg);
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    button:hover {
+        background: color-mix(
+            in oklch,
+            var(--color-accent),
+            black 15%
+        );
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+        outline: 3px solid oklch(75% 0.15 75);
+        outline-offset: 3px;
+    }
+
+    .skip-link {
+        position: absolute;
+        left: 16px;
+        top: -60px;
+        z-index: 1000;
+        padding: 10px 16px;
+        background: var(--color-bg);
+        color: var(--color-accent);
+        border: 2px solid var(--color-accent);
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .skip-link:focus {
+        top: 14px;
+    }
+
+    footer {
+        background: var(--color-header-start);
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-block-start: 40px;
+        border-radius: 10px;
+    }
+
+    footer address {
+        font-style: normal;
+    }
+
+    /* TASK 3: Specificity experiment */
+    :where(nav ul li) a {
+        color: purple;
+    }
+
+    .nav-link {
+        color: darkgreen;
+    }
+
+    a[aria-current="location"] {
+        color: crimson;
+    }
+
+    
 }
 
-header {
-    background: linear-gradient(135deg, #173b70, #2563a6);
-    color: white;
-    padding: 35px 8%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+/* =========================
+   TASK 9: UTILITY CLASSES
+   ========================= */
+
+@layer utilities {
+    .text-muted {
+        color: var(--color-muted);
+    }
 }
 
-header h1 {
-    margin: 0 0 20px;
-    font-size: 2.2rem;
-}
 
-nav ul {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav a {
-    display: inline-block;
-    color: white;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.15);
-    transition: background 0.2s, transform 0.2s;
-}
-
-nav a:hover {
-    background: rgba(255, 255, 255, 0.28);
-    transform: translateY(-2px);
-}
-
-main {
-    max-width: 1000px;
-    margin: 35px auto;
-    padding: 0 25px;
-}
-
-section {
-    background: white;
-    margin-bottom: 30px;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
-}
-
-section h2 {
-    color: #173b70;
-    margin-top: 0;
-    border-bottom: 2px solid #dbe7f5;
-    padding-bottom: 10px;
-}
-
-#intro ul {
-    padding-left: 25px;
-}
-
-#intro li {
-    margin: 8px 0;
-}
-
-main > svg {
-    display: block;
-    margin: 10px auto;
-    fill: #2563a6;
-}
-
-figure {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: #eef5fc;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
-figure svg {
-    flex-shrink: 0;
-    fill: #2563a6;
-}
-
-figcaption {
-    color: #374151;
-    font-size: 0.95rem;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-caption {
-    text-align: left;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #173b70;
-}
-
-th,
-td {
-    border: 1px solid #d5deea;
-    padding: 13px;
-    text-align: left;
-}
-
-th {
-    background: #173b70;
-    color: white;
-}
-
-tbody tr:nth-child(even) {
-    background: #f4f7fb;
-}
-
-tbody tr:hover {
-    background: #eaf2fb;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-label {
-    display: block;
-    margin-bottom: 7px;
-    font-weight: bold;
-}
-
-input,
-textarea,
-button {
-    font: inherit;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    max-width: 600px;
-    padding: 11px 13px;
-    border: 1px solid #b8c5d6;
-    border-radius: 8px;
-    background: white;
-}
-
-textarea {
-    resize: vertical;
-}
-
-input[type="radio"] {
-    width: auto;
-    margin-right: 8px;
-}
-
-fieldset {
-    border: 1px solid #c8d5e5;
-    border-radius: 10px;
-    padding: 18px;
-    max-width: 600px;
-}
-
-legend {
-    font-weight: bold;
-    color: #173b70;
-    padding: 0 8px;
-}
-
-fieldset label {
-    font-weight: normal;
-}
-
-#email-hint {
-    display: block;
-    margin-top: 5px;
-    color: #5b6470;
-    font-size: 0.9rem;
-}
-
-button {
-    width: fit-content;
-    padding: 11px 24px;
-    border: none;
-    border-radius: 8px;
-    background: #173b70;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button:hover {
-    background: #2563a6;
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-    outline: 3px solid #f59e0b;
-    outline-offset: 3px;
-}
-
-.skip-link {
-    position: absolute;
-    left: 16px;
-    top: -60px;
-    z-index: 1000;
-    padding: 10px 16px;
-    background: white;
-    color: #173b70;
-    border: 2px solid #173b70;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.skip-link:focus {
-    top: 14px;
-}
-
-footer {
-    background: #173b70;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-}
-
-footer address {
-    font-style: normal;
-}
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
 
 @media (max-width: 650px) {
     header {
@@ -273,7 +420,7 @@ footer address {
     }
 
     main {
-        padding: 0 15px;
+        padding-inline: 5px;
     }
 
     section {
@@ -282,5 +429,10 @@ footer address {
 
     table {
         font-size: 0.9rem;
+    }
+
+    th,
+    td {
+        padding: 8px;
     }
 }
