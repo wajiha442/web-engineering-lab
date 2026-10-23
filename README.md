@@ -1,6 +1,6 @@
- # Web Engineering Labs 01–03
+ # Web Engineering Labs 01–04
 
-This repository contains my Web Engineering lab work, completed as part of the Web Engineering course. It covers foundational web development concepts, semantic HTML, accessibility, and modern CSS.
+This repository contains my Web Engineering lab work, completed as part of the Web Engineering course. It covers foundational web development, semantic HTML, accessibility, modern CSS, responsive layouts, and JavaScript programming.
 
 ## Technologies
 
@@ -14,12 +14,15 @@ This repository contains my Web Engineering lab work, completed as part of the W
 - serve
 - Git
 - GitHub
+- Chrome DevTools
+- Lighthouse
 
 ## Lab 01: HTML Foundations
 
 This lab focuses on the basic structure and foundations of web development.
 
 ### Topics Covered
+
 - Basic HTML document structure
 - HTML elements and attributes
 - Headings, paragraphs, and links
@@ -33,6 +36,7 @@ This lab focuses on the basic structure and foundations of web development.
 This lab focuses on semantic HTML, accessible page structure, and accessible form and navigation elements.
 
 ### Features
+
 - Semantic HTML structure using `header`, `nav`, `main`, `section`, and `footer`
 - Skip-to-main-content link
 - Accessible navigation using `aria-current`
@@ -56,11 +60,12 @@ This lab focuses on semantic HTML, accessible page structure, and accessible for
 This lab focuses on CSS cascade behavior, selector specificity, inheritance, custom properties, cascade layers, modern color functions, and accessibility testing.
 
 ### Topics Covered
+
 - CSS reset and `box-sizing`
 - Margin behavior and margin collapsing
 - CSS specificity and selector comparisons
 - Understanding and testing `!important`
-- CSS custom properties (variables) using `:root`
+- CSS custom properties using `:root`
 - Typography inheritance using `font: inherit`
 - CSS cascade layers using `@layer`
 - Comparing specificity and cascade layer priority
@@ -72,6 +77,75 @@ This lab focuses on CSS cascade behavior, selector specificity, inheritance, cus
 - Accessibility audits using Lighthouse
 - Git commits and pushing changes to GitHub
 
+## Lab 04: Modern CSS Layouts and JavaScript
+
+This lab focuses on Flexbox, CSS Grid, responsive design, JavaScript event handling, ES modules, asynchronous programming, and accessibility testing.
+
+### Tasks Completed
+
+**Task 1: Flexbox Header Layout**
+
+- Used Flexbox to align the website title and navigation links.
+- Practiced `justify-content`, `align-items`, `flex-wrap`, and `gap`.
+
+**Task 2: Navigation Styling**
+
+- Arranged navigation links in a horizontal row using Flexbox.
+- Used the `gap` property to control spacing.
+
+**Task 3: Figure Layout**
+
+- Used Flexbox to align an SVG icon with its caption.
+
+**Task 4: CSS Grid Schedule**
+
+- Created a two-column schedule layout using CSS Grid.
+- Used the `.span-all` utility class to span both columns.
+
+**Task 5: Form Layout**
+
+- Arranged form fields in two columns using CSS Grid.
+- Made selected form elements span the full width.
+
+**Task 6: Responsive Design**
+
+- Added a media query to adapt the schedule and form layouts to smaller screens.
+- Tested the responsive layout using Chrome DevTools.
+
+**Task 7: Booking Buttons**
+
+- Added booking buttons with `data-day` attributes.
+- Displayed booking feedback in an accessible status paragraph using `role="status"`.
+
+**Task 8: JavaScript Event Delegation**
+
+- Created `main.js` and loaded it using `type="module"`.
+- Used event delegation, `closest()`, and `dataset` to handle booking button clicks.
+
+**Task 9: Dynamic Row Selection**
+
+- Used `classList.toggle()` to select and deselect schedule rows.
+- Used `querySelectorAll()` to count selected rows.
+- Highlighted selected rows with CSS.
+
+**Task 10: JavaScript Event Loop**
+
+- Explored synchronous execution, Promises, and `setTimeout()`.
+- Compared the predicted and actual execution order.
+- Documented the results in `NOTES.md`.
+
+**Task 11: ES Modules and Async/Await**
+
+- Created `utils.js` for reusable utility functions.
+- Exported and imported `delay()` and `makeCounter()`.
+- Used `async/await` and a one-second delay to display numbered booking confirmations.
+
+**Task 12: Accessibility and Lighthouse Testing**
+
+- Tested keyboard navigation and interactive elements.
+- Used Chrome Lighthouse to audit the website.
+- Reviewed the audit results and prepared the project for GitHub submission.
+
 ## Project Structure
 
 ```text
@@ -80,13 +154,18 @@ web-engineering-lab/
 ├── public/
 │   ├── index.html
 │   ├── styles.css
+│   ├── main.js
+│   ├── utils.js
 │   └── script.js
 │
 ├── tests/
+├── NOTES.md
 ├── README.md
 ├── package.json
 └── package-lock.json
 ```
+
+*Note: The project structure above includes files used in Lab 04. Adjust it to match the actual files and folders in your repository.*
 
 ## Running the Project
 
@@ -108,23 +187,27 @@ web-engineering-lab/
 
 ## Tools and Quality Checks
 
-- **ESLint:** JavaScript code linting
-- **Prettier:** Consistent code formatting
-- **axe DevTools:** Accessibility checks
-- **Lighthouse:** Accessibility audits
-- **Git and GitHub:** Version control and project hosting
+- **ESLint:** JavaScript code linting.
+- **Prettier:** Consistent code formatting.
+- **axe DevTools:** Accessibility checks.
+- **Chrome DevTools:** Debugging and responsive design testing.
+- **Lighthouse:** Website quality and accessibility audits.
+- **Git and GitHub:** Version control and project hosting.
 
 ## Learning Outcomes
 
 Through these labs, I am developing practical skills in:
 
-- Structuring web pages with HTML
-- Using semantic and accessible HTML elements
-- Styling pages with CSS
-- Understanding CSS specificity, inheritance, and cascade layers
-- Working with custom properties and modern CSS color functions
-- Testing accessibility and usability
-- Managing code changes using Git and GitHub
+- Structuring web pages using HTML and semantic elements.
+- Building accessible navigation, tables, and forms.
+- Applying CSS specificity, inheritance, cascade layers, and custom properties.
+- Using modern CSS color functions and theme-aware styling.
+- Creating responsive layouts with Flexbox and CSS Grid.
+- Handling browser events and manipulating the DOM with JavaScript.
+- Understanding the JavaScript Event Loop, Promises, and asynchronous execution.
+- Organizing JavaScript code using ES modules.
+- Testing keyboard accessibility and using Lighthouse.
+- Managing and publishing project changes with Git and GitHub.
 
 ## Author
 
@@ -132,4 +215,4 @@ Web Engineering Student
 
 ## Repository
 
-This repository contains practical exercises and implementations from Web Engineering Labs 01–03.
+This repository contains practical exercises and implementations from Web Engineering Labs 01–04.
